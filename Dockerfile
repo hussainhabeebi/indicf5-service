@@ -10,7 +10,8 @@ WORKDIR /app
 RUN pip install --no-cache-dir torch==2.4.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/cpu
 
 RUN pip install --no-cache-dir \
-    "transformers>=4.44" \
+    "transformers==4.46.3" \
+    "accelerate==1.1.1" \
     fastapi \
     "uvicorn[standard]" \
     soundfile \
