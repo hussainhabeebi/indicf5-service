@@ -6,18 +6,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-# CPU-only torch keeps the image smaller; swap for CUDA wheel if you ever add a GPU
-RUN pip install --no-cache-dir torch==2.4.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir torch==2.2.0 torchaudio==2.2.0 --index-url https://download.pytorch.org/whl/cpu
 
 RUN pip install --no-cache-dir \
-    "transformers==4.46.3" \
-    "accelerate==1.1.1" \
+    transformers==4.49.0 \
+    accelerate==0.33.0 \
+    soundfile==0.12.1 \
+    safetensors==0.4.3 \
+    huggingface_hub==0.29.0 \
+    numpy==1.26.4 \
+    pydub==0.25.1 \
     fastapi \
     "uvicorn[standard]" \
-    soundfile \
-    numpy \
-    huggingface_hub \
-    f5-tts
+    git+https://github.com/ai4bharat/IndicF5.git
 
 COPY app.py /app/app.py
 
