@@ -31,6 +31,7 @@ model = AutoModel.from_pretrained(
     MODEL_ID,
     trust_remote_code=True,
     token=os.environ.get("HF_TOKEN"),
+    low_cpu_mem_usage=False,
 )
 print("Model loaded.")
 
